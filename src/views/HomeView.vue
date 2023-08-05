@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import BookSearch from '../components/FindBooks.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <BookSearch />
   </main>
 </template>
