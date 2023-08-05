@@ -1,14 +1,24 @@
 # books-listing-app
+## Main points 
+- Vue app created with Vue 3 CLI and Vite 
+- Configured Proxy via .env and vite.config.js to send API requests to Backend concurrent Node.js server to forward API requests with .env variables
+- Parsed XML response from external API to JSON in Node.js server
+## Lessons Learned 
+- In Node.js, a fetch response in XML needs to be converted to text ( `response.text() `) before parsing to JSON
+- When configuring the proxy, the URL path beyond the root path on the front-end URL is forwarded to the proxy server
+  ```js
+    server: {
+    proxy: {
+      '/api': {
+        target: `${process.env.PROXY}${process.env.PORT}`, //             //localhost:7777  
+        changeOrigin: true,                                // after proxy //localhost:7777/api
+        secure: false,      
 
-This template should help get you started developing with Vue 3 in Vite.
+      },
+    },
+  },
+  ```
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
